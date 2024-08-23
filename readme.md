@@ -11,7 +11,7 @@
 4.  pip install -r requirments.txt
 5. 
     - Download the pretrained pedestrian ReID model ```MOT17-SBS-S50``` from Bot-SORT. 
-        - The link can be find at [BoTSORT](https://github.com/NirAharon/BoT-SORT/) readme file.
+        - The link can be find at [BoT-SORT](https://github.com/NirAharon/BoT-SORT/) readme file.
     - Download the pretrained vehicle ReID model ```BoT(R50-ibn)``` from __VehicleID Baseline__
         - The line can be find at fast reid [MODEL_ZOO](https://github.com/NirAharon/BoT-SORT/blob/main/fast_reid/MODEL_ZOO.md)
     
