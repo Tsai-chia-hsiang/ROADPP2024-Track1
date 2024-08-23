@@ -1,0 +1,23 @@
+
+detector:
+  device: 0
+  weights: detection/ckpt/baseline/weights/best.pt
+  threshold: 0.001
+
+trackers:
+  -
+    semantic : TL
+    cls_id: 
+      - 9
+    dup_iou: 0.6
+    bot_args:
+      fuse: true
+      track_high_thresh: 0.0
+      track_low_thresh: 0.0
+      new_track_thresh: 0.0
+      match_thresh: 0.96
+      proximity_thresh: 0.96
+      with_reid: false
+      track_buffer: 30
+dataset:
+  video_root: /datasets/roadpp/test_videos

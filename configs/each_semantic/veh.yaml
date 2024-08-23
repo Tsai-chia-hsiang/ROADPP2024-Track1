@@ -1,0 +1,33 @@
+
+dataset:
+  video_root: /datasets/roadpp/test_videos
+  target_seq:
+    - 100
+
+detector:
+  device: 0
+  weights: detection/ckpt/baseline/weights/best.pt
+  threshold: 0.001
+
+trackers:
+  - 
+    semantic : veh
+    cls_id: 
+      - 1
+      - 4
+      - 5
+      - 6
+      - 8
+    bot_args:
+      fuse: true
+      match_thresh: 0.9
+      track_high_thresh: 0.5
+      track_low_thresh: 0.2
+      new_track_thresh: 0.2
+      with_reid: true
+      track_buffer: 30
+      proximity_thresh: 0.5
+      appearance_thresh: 0.25
+      fast_reid_config: ./fast_reid/configs/VehicleID/bagtricks_R50-ibn.yml
+      fast_reid_weights: ./fast_reid/ckpt/vehicleid_bot_R50-ibn.pth
+  

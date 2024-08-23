@@ -1,0 +1,29 @@
+
+detector:
+  device: 0
+  weights: detection/ckpt/baseline/weights/best.pt
+  threshold: 0.001
+
+trackers:
+  -
+    semantic: ped
+    cls_id:
+      - 0
+      - 2
+      - 3
+    bot_args:
+      fuse: true
+      match_thresh: 0.85
+      track_high_thresh: 0.2
+      track_low_thresh: 0.1
+      new_track_thresh: 0.1
+      proximity_thresh: 0.5
+      appearance_thresh: 0.20
+      with_reid: true
+      track_buffer: 30
+      fast_reid_config: ./fast_reid/configs/MOT17/sbs_S50.yml
+      fast_reid_weights: ./fast_reid/ckpt/mot17_sbs_S50.pth
+dataset:
+  video_root: /datasets/roadpp/test_videos
+  target_seq:
+    - 100
