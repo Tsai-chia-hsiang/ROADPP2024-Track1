@@ -1,0 +1,81 @@
+
+detector:
+  device: 0
+  weights: detection/ckpt/baseline/weights/best.pt
+  threshold: 0.001
+
+trackers:
+  - 
+    semantic : veh
+    cls_id: 
+      - 1
+      - 4
+      - 5
+      - 6
+      - 8
+    bot_args:
+      fuse: true
+      match_thresh: 0.9
+      track_high_thresh: 0.5
+      track_low_thresh: 0.2
+      new_track_thresh: 0.2
+      with_reid: true
+      track_buffer: 30
+      proximity_thresh: 0.5
+      appearance_thresh: 0.25
+      fast_reid_config: ./fast_reid/configs/VehicleID/bagtricks_R50-ibn.yml
+      fast_reid_weights: ./fast_reid/ckpt/vehicleid_bot_R50-ibn.pth
+  
+  - 
+    semantic : bus
+    dup_iou: 0.6
+    cls_id: 
+      - 7
+    bot_args:
+      fuse: true
+      match_thresh: 0.9
+      track_high_thresh: 0.5
+      track_low_thresh: 0.2
+      new_track_thresh: 0.2
+      with_reid: false
+      track_buffer: 30
+      proximity_thresh: 0.5
+  
+  -
+    semantic: ped
+    cls_id:
+      - 0
+      - 2
+      - 3
+    bot_args:
+      fuse: true
+      match_thresh: 0.85
+      track_high_thresh: 0.2
+      track_low_thresh: 0.1
+      new_track_thresh: 0.1
+      proximity_thresh: 0.5
+      appearance_thresh: 0.20
+      with_reid: true
+      track_buffer: 30
+      fast_reid_config: ./fast_reid/configs/MOT17/sbs_S50.yml
+      fast_reid_weights: ./fast_reid/ckpt/mot17_sbs_S50.pth
+  
+  -
+    semantic : TL
+    cls_id: 
+      - 9
+    dup_iou: 0.6
+    bot_args:
+      fuse: true
+      track_high_thresh: 0.0
+      track_low_thresh: 0.0
+      new_track_thresh: 0.0
+      match_thresh: 0.96
+      proximity_thresh: 0.96
+      with_reid: false
+      track_buffer: 30
+
+dataset:
+  video_root: /datasets/roadpp/test_videos
+  target_seq:
+    - 100
