@@ -1,4 +1,4 @@
-## For [ROAD++ 2024@ECCV](https://sites.google.com/view/road-eccv2024/challenge?authuser=0)  Track1
+## For [ROAD++@ECCV2024](https://sites.google.com/view/road-eccv2024/challenge?authuser=0)  Track1
 
 
 ## install :
