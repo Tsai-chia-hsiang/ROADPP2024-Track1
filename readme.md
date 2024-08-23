@@ -1,10 +1,9 @@
 ## For [ROAD++@ECCV2024](https://sites.google.com/view/road-eccv2024/challenge?authuser=0)  Track1
 
 
-## install :
-### Environment
 - OS: Ubuntu24.04
 
+## install :
 1. Create a python3.10.14 environment
 2.  install __torch torchvision__ following [PyTorch](https://pytorch.org/get-started/locally/)
 3. git clone this repo 
