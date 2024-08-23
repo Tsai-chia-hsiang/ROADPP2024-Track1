@@ -2,13 +2,20 @@
 
 
 ## install :
-- OS: Ubuntu24.04
-- python:3.10.14
+### Environment
+    - OS: Ubuntu24.04
 
-1.  install __torch torchvision__ following [PyTorch](https://pytorch.org/get-started/locally/)
-
-2.  pip install -r requirments.txt
-
+1. Create a python3.10.14 environment
+2.  install __torch torchvision__ following [PyTorch](https://pytorch.org/get-started/locally/)
+3. git clone this repo 
+4.  pip install -r requirments.txt
+5. 
+    - Download the pretrained pedestrian ReID model ```MOT17-SBS-S50``` from Bot-SORT. 
+        - The link can be find at [BoT-SORT]("https://github.com/NirAharon/BoT-SORT/tree/main)
+    - Download the pretrained vehicle ReID model ```BoT(R50-ibn)``` from __VehicleID Baseline__
+        - The line can be find at fast reid [MODEL_ZOO](https://github.com/NirAharon/BoT-SORT/blob/main/fast_reid/MODEL_ZOO.md)
+    
+    Put above 2 pretrained weights at ```./fast_reid/ckpt/```.
 
 ## First: Train the YOLOv10 detector
 We using 1080Ti x 4 to train YOLOv10 from [ultralytics](https://www.ultralytics.com/)
