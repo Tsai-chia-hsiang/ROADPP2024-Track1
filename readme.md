@@ -3,7 +3,7 @@
 
 ## install :
 ### Environment
-    - OS: Ubuntu24.04
+- OS: Ubuntu24.04
 
 1. Create a python3.10.14 environment
 2.  install __torch torchvision__ following [PyTorch](https://pytorch.org/get-started/locally/)
