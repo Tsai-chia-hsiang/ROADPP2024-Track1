@@ -77,5 +77,5 @@ trackers:
 
 dataset:
   video_root: /datasets/roadpp/test_videos
-  target_seq:
-    - 100
+  #target_seq:
+  #  - 100
