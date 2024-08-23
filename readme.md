@@ -13,7 +13,7 @@
     - Download the pretrained pedestrian ReID model ```MOT17-SBS-S50``` from Bot-SORT. 
         - The link can be find at [BoT-SORT](https://github.com/NirAharon/BoT-SORT/) readme file.
     - Download the pretrained vehicle ReID model ```BoT(R50-ibn)``` from __VehicleID Baseline__
-        - The line can be find at fast reid [MODEL_ZOO](https://github.com/NirAharon/BoT-SORT/blob/main/fast_reid/MODEL_ZOO.md)
+        - The line can be find at fast reid [MODEL_ZOO](https://github.com/JDAI-CV/fast-reid/blob/master/MODEL_ZOO.md)
     
     Put above 2 pretrained weights at ```./fast_reid/ckpt/```.
 
@@ -117,3 +117,12 @@ e.g.
 1. set the target sequence to 100 at [targe_seq](configs/each_semantic/veh.yaml#4)  
 
 2. ```python tracking.py --config ./config/each_semantic/veh.yaml --pkl_dir ./submit/veh_only --demo ./demo``` 
+
+## Acknowledgments
+
+This project utilizes code and resources from the following repositories:
+
+- [BoT-SORT](https://github.com/NirAharon/BoT-SORT/) : The code base of ```./tracker``` 
+- [fast Reid](https://github.com/JDAI-CV/fast-reid) To re-identify objects during tracking and prevent ID switches, the same as how [BoT-SORT](https://github.com/NirAharon/BoT-SORT/) operates.
+
+We deeply appreciate the work of these developers and their contributions to the open-source community.
