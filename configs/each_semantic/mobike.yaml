@@ -1,0 +1,29 @@
+
+detector:
+  device: 0
+  weights: detection/ckpt/baseline/weights/best.pt
+  threshold: 0.001
+
+trackers:
+
+  - 
+    semantic: mobike
+    cls_id: 
+      - 3
+    dup_iou: 0.6
+    bot_args:
+      fuse: true
+      match_thresh: 0.85
+      track_high_thresh: 0.1
+      track_low_thresh: 0.005
+      new_track_thresh: 0.005
+      proximity_thresh: 0.5
+      with_reid: false
+      track_buffer: 30
+
+dataset:
+  video_root: /mnt/Nami/dataset/roadpp/videos
+  prefix: train
+  #/datasets/roadpp/test_videos
+  target_seq:
+    - 365
