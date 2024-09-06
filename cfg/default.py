@@ -9,6 +9,7 @@ _C.detector.threshold = 0.007
 _C.trackers = []
 
 _C.dataset = CN()
+_C.dataset.prefix = "val"
 _C.dataset.video_root = ""
 _C.dataset.video_postfix = "mp4"
 _C.dataset.target_seq = []
