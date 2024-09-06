@@ -33,7 +33,7 @@ and the weights is at {--project}/{--name}/weight/best.pt
 
 In our experiment, the best weights are from the epoch 2.
 
-## Second: Tracking with BoTSORT
+## Second: Tracking by BoTSORT
 We use multiple semantic-based trackers to follow the detection results from YOLOv10. Each tracker is designed to associate with only the corresponding classes of detection results.
 
 The setting file formation:
@@ -113,7 +113,7 @@ All the threshold settings for BoTSORT used by each tracker can be found in the 
 Also, the sepcific val sequence and the visualization can be set as the above method. 
 
 e.g. 
-1. set the target sequence to 100 at [targe_seq](configs/each_semantic/veh.yaml#4)  
+1. set the target sequence to 100 at [target_seq](configs/each_semantic/veh.yaml#4)  
 
 2. ```python tracking.py --config ./config/each_semantic/veh.yaml --pkl_dir ./submit/veh_only --demo ./demo``` 
 
