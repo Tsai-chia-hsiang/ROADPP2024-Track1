@@ -93,7 +93,9 @@ def track_a_seq(detector:YOLO, seq:Path, trackers:list[dict[str, dict]], low_thr
             continue
 
         pred_cls = detection_i.cls
-    
+        this_frame_det = 0
+        this_frame_track = 0
+        
         for g in group:
             
             this_group_cls = torch.nonzero(
@@ -114,6 +116,8 @@ def track_a_seq(detector:YOLO, seq:Path, trackers:list[dict[str, dict]], low_thr
             
             if 'dup_iou' in trackers[g]:
                 det = remove_dup(det, iou_thr=trackers[g]['dup_iou'], fid=fid)
+            
+            this_frame_det += len(det)
             if debug:
                 for di in det:
                     plot_box(
@@ -124,7 +128,7 @@ def track_a_seq(detector:YOLO, seq:Path, trackers:list[dict[str, dict]], low_thr
             
             det = det.cpu().numpy()    
             online_targets = bot_sorter[g].update(det, frame, fid=fid)
-
+            this_frame_track += len(online_targets)
             for t in online_targets:
                 track_id = t.track_id
                 x1, y1, x2, y2 = t.tlbr
@@ -160,7 +164,7 @@ def track_a_seq(detector:YOLO, seq:Path, trackers:list[dict[str, dict]], low_thr
                         color=C_MAP[track_id%100] 
                     )
     
-        if debug:
+        if debug and (this_frame_track > 0 or this_frame_det > 0):
             cv2.imwrite(
                 f"./debug/{seq.stem}/{fid}.jpg",
                 cv2.hconcat([img_plt_det, img_plt])
@@ -202,10 +206,11 @@ def main(args:CN, cmd:Namespace):
     yolo = YOLO(args.detector.weights)
     yolo.to(torch.device(f"cuda:{args.detector.device}"))
 
-    pbar = tqdm(generate_seqs(naming_rule=lambda x: f"val_{f'{x}'.zfill(5)}"))
+    pbar = tqdm(generate_seqs(naming_rule=lambda x: f"{args.dataset.prefix}_{f'{x}'.zfill(5)}"))
     submit = {'agent':{}}
     for si in pbar:
-        assert si.exists()
+        if not si.exists():
+            raise FileNotFoundError(f"{si} doesn't exist")
         pbar.set_postfix(ordered_dict={"seq":f"{si.name}"})
         agent = track_a_seq(
             detector=yolo, seq=si, trackers=args.trackers, 
