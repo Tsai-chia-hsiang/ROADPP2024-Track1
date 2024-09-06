@@ -28,39 +28,51 @@ trackers:
   
   - 
     semantic : bus
-    dup_iou: 0.7
+    dup_iou: 0.6
     cls_id: 
       - 7
     bot_args:
       fuse: true
       match_thresh: 0.9
-      track_high_thresh: 0.3
-      track_low_thresh: 0.02
-      new_track_thresh: 0.02
+      track_high_thresh: 0.5
+      track_low_thresh: 0.2
+      new_track_thresh: 0.2
       with_reid: false
       track_buffer: 30
-      proximity_thresh: 0.7
+      proximity_thresh: 0.5 
   
   -
     semantic: ped
-    dup_iou: 0.6
     cls_id:
       - 0
       - 2
-      - 3
     bot_args:
       fuse: true
       match_thresh: 0.85
-      track_high_thresh: 0.3
+      track_high_thresh: 0.2
       track_low_thresh: 0.1
       new_track_thresh: 0.1
-      proximity_thresh: 0.8
-      appearance_thresh: 0.3
+      proximity_thresh: 0.5
+      appearance_thresh: 0.20
       with_reid: true
       track_buffer: 30
       fast_reid_config: ./fast_reid/configs/MOT17/sbs_S50.yml
       fast_reid_weights: ./fast_reid/ckpt/mot17_sbs_S50.pth
   
+  - 
+    semantic: mobike
+    cls_id: 
+      - 3
+    dup_iou: 0.6
+    bot_args:
+      fuse: true
+      match_thresh: 0.85
+      track_high_thresh: 0.1
+      track_low_thresh: 0.005
+      new_track_thresh: 0.005
+      proximity_thresh: 0.5
+      with_reid: false
+      track_buffer: 30
   -
     semantic : TL
     cls_id: 
@@ -68,14 +80,14 @@ trackers:
     dup_iou: 0.6
     bot_args:
       fuse: true
-      track_high_thresh: 0.005
-      track_low_thresh: 0.005
-      new_track_thresh: 0.005
-      proximity_thresh: 0.999999999999
-      match_thresh: 0.999999999999
+      track_high_thresh: 0.0
+      track_low_thresh: 0.0
+      new_track_thresh: 0.0
+      match_thresh: 0.96
+      proximity_thresh: 0.96
       with_reid: false
       track_buffer: 30
-    
+
 dataset:
   video_root: /datasets/roadpp/test_videos
   #target_seq:
