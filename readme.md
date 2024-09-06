@@ -5,7 +5,7 @@
 
 ## installation :
 1. Create a python3.10.14 environment
-2.  install __torch torchvision__ following [PyTorch](https://pytorch.org/get-started/locally/)
+2.  install CUDA supported __torch torchvision__ following [PyTorch](https://pytorch.org/get-started/locally/)
 3. git clone this repo 
 4.  pip install -r requirments.txt
 5. 
@@ -17,7 +17,7 @@
     Put above 2 pretrained weights at ```./fast_reid/ckpt/```.
 
 ## First: Train the YOLOv10 detector
-We using 1080Ti x 4 to train YOLOv10 from [ultralytics](https://www.ultralytics.com/)
+We use 1080Ti x 4 to train YOLOv10 provided by [ultralytics](https://www.ultralytics.com/)
 
 The training settings can be found at the default arguments of [```parse_cmd_args()```](./train_detector.py#L70) of ```train_detector.py```
 
